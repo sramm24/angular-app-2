@@ -10,6 +10,14 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Pay-As-You-Go(64d830d4-6626-43c8-acd3-060062ef0c83)'
+    appType: 'webAppLinux'
+    WebAppName: 'demo-subhasram'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'NODE|18-lts'
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
